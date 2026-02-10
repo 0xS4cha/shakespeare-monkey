@@ -1,10 +1,5 @@
 math.randomseed(os.time())
 
-local function random_char(charset)
-    local idx = math.random(1, #charset)
-    return string.sub(charset, idx, idx)
-end
-
 local Agent = {}
 Agent.__index = Agent
 
@@ -16,7 +11,7 @@ function Agent.new(scale, charset, genes)
     else
         self.genes = {}
         for _ = 1, scale do
-            table.insert(self.genes, random_char(charset))
+            table.insert(self.genes, self.charset[math.random(#self.charset)])
         end
     end
     
@@ -57,7 +52,7 @@ end
 function Agent:mutation(rate)
     for i = 1, #self.genes do
         if math.random() < rate then
-            self.genes[i] = random_char(self.charset)
+            self.genes[i] = self.charset[math.random(#self.charset)]
         end
     end
 end
