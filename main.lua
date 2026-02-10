@@ -1,6 +1,8 @@
 local Agent = require ("agent")
 
-local TARGET <const> = "POST TENEBRAS LUX"
+io.write('Target text ?')
+
+local TARGET <const> = string.upper(io.read())
 local POPULATION_MAX <const> = 200
 local MUTATION_RATE <const> = 0.01
 local CHARSET <const> = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
@@ -8,6 +10,8 @@ local CHARSET <const> = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 local population = {}
 local generation = 1
 local found = false
+
+
 
 local function pick_one(population, max_fitness_sum)
     local index = 0
